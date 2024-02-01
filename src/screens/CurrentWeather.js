@@ -6,17 +6,17 @@ import { weatherType } from "../utilities/weatherType"
 export default function CurrentWeather ({ weatherData }) {
   const {wrapper, container, tempStyles, feels, highLowWrapper, highLow, bodyWrapper, description, message } = styles
   const { main: {temp, feels_like, temp_max, temp_min}, weather } = weatherData
-  const weatherCondition = weather[0].main
-
+  const weatherCondition = weather[0]?.main
+  
   return (
-    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
       <View style={container}>
-        <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
-        <Text style={tempStyles}>{temp}</Text>
-        <Text style={feels}>Feels like {feels_like}</Text>
-        <RowText bodyText1={`High: ${temp_max}`} bodyText2={`Low: ${temp_min}`} viewStyles={highLowWrapper} bodyTextStyle1={highLow} bodyTextStyle2={highLow} />
+        <Feather name={weatherType[weatherCondition]?.icon} size={100} color="white" />
+        <Text style={tempStyles}>{temp}°</Text>
+        <Text style={feels}>Feels like {feels_like}°</Text>
+        <RowText bodyText1={`High: ${temp_max}° `} bodyText2={`Low: ${temp_min}°`} viewStyles={highLowWrapper} bodyTextStyle1={highLow} bodyTextStyle2={highLow} />
       </View>
-      <RowText bodyText1={weather[0].description} bodyText2={weatherType[weatherCondition].message} viewStyles={bodyWrapper} bodyTextStyle1={description} bodyTextStyle2={message} />    
+      <RowText bodyText1={weather[0]?.description} bodyText2={weatherType[weatherCondition]?.message} viewStyles={bodyWrapper} bodyTextStyle1={description} bodyTextStyle2={message} />    
     </SafeAreaView>
   )
 }
@@ -24,7 +24,6 @@ export default function CurrentWeather ({ weatherData }) {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: "pink",
   },
   container: {
     flex: 1,
@@ -53,10 +52,10 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   description: {
-    fontSize: 48
+    fontSize: 43
   },
   message: {
-    fontSize: 30
+    fontSize: 25
   }
 
 })

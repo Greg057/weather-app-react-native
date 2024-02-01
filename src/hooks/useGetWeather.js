@@ -11,7 +11,7 @@ export default function useGetWeather () {
 
     async function fetchWeatherData () {
         try {
-          const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`)
+          const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
           const data = await res.json()
           setWeather(data)
         } catch (err) {
