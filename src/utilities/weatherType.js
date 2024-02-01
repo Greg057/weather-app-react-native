@@ -1,5 +1,3 @@
-
-
 export const weatherType = {
     Thunderstorm: {
         icon: "zap",
